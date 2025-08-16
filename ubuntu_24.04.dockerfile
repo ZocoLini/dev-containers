@@ -2,10 +2,11 @@ FROM ubuntu:24.04
 
 LABEL author="Borja Castellano" version="0.1.0"
 
-ARG USERNAME=borja
+ARG USERNAME=ubuntu
 
 RUN apt-get update && \
     apt-get install -y \
+    sudo \
     curl \
     git \
     libopenmpi-dev \
@@ -18,7 +19,9 @@ RUN apt-get update && \
     openssh-server
 
 RUN deluser --remove-home ubuntu
-RUN useradd -ms /bin/bash $USERNAME
+
+RUN useradd -ms /bin/bash -U -G sudo $USERNAME
+RUN echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 RUN mkdir /var/run/sshd
 
