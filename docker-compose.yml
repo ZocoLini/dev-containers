@@ -19,3 +19,4 @@ services:
         working_dir: /home/$USERNAME
         ports:
             - 9000:22
+            - 8000:8000

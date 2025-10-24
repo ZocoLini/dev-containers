@@ -9,14 +9,12 @@ RUN apt-get update && \
     sudo \
     curl \
     git \
-    libopenmpi-dev \
-    openmpi-bin \
     build-essential \
     cmake \
     gdb \
-    libpapi-dev papi-tools \
     gfortran \
-    openssh-server
+    openssh-server \
+    pkg-config
 
 RUN deluser --remove-home ubuntu
 
