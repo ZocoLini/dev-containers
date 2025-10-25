@@ -16,6 +16,9 @@ RUN apt-get update && \
     openssh-server \
     pkg-config
 
+RUN apt-get install -y \
+    pipx
+
 RUN deluser --remove-home ubuntu
 
 RUN useradd -ms /bin/bash -U -G sudo $USERNAME
@@ -27,6 +30,9 @@ EXPOSE 22
 
 USER $USERNAME
 WORKDIR /home/$USERNAME
+
+RUN pipx ensurepath
+RUN pipx install pre-commit
 
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 ENV PATH="/home/${USERNAME}/.cargo/bin:${PATH}"
