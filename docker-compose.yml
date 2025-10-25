@@ -16,6 +16,7 @@ services:
             - $HOME/.ssh:/home/$USERNAME/.ssh:ro
             - $HOME/.gitconfig:/home/$USERNAME/.gitconfig:ro
             - $HOME/.git-credentials:/home/$USERNAME/.git-credentials:ro
+            - $HOME/.cargo/credentials.toml:/home/$USERNAME/.cargo/credentials.toml:ro
         working_dir: /home/$USERNAME
         ports:
             - 9000:22
