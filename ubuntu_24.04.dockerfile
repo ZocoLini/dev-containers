@@ -17,6 +17,10 @@ RUN apt-get update && \
     pkg-config
 
 RUN apt-get install -y \
+    valgrind \
+    kcachegrind
+
+RUN apt-get install -y \
     pipx
 
 RUN deluser --remove-home ubuntu
