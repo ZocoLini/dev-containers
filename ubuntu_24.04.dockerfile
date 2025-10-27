@@ -17,8 +17,7 @@ RUN apt-get update && \
     pkg-config
 
 RUN apt-get install -y \
-    valgrind \
-    kcachegrind
+    valgrind 
 
 RUN apt-get install -y \
     pipx
