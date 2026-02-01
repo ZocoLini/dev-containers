@@ -21,3 +21,22 @@ services:
         ports:
             - 9000:22
             - 8000:8000
+    openclaw:
+      build:
+            context: .
+            dockerfile: openclaw.dockerfile
+            args:
+                USERNAME: $USER
+                UID: $ACTUAL_UID
+                GID: $ACTUAL_GID
+      image: devcontainer/openclaw:latest
+      container_name: openclaw
+      tty: true
+      command: /usr/sbin/sshd -D
+      volumes:
+        - $HOME/projects:/home/$USERNAME/projects
+        - $HOME/.ssh:/home/$USERNAME/.ssh:ro
+        - $HOME/.gitconfig:/home/$USERNAME/.gitconfig:ro
+      working_dir: /home/$USERNAME
+      ports:
+        - 9001:22
