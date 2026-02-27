@@ -14,7 +14,8 @@ RUN apt-get update && \
     gdb \
     gfortran \
     openssh-server \
-    pkg-config
+    pkg-config \
+    nano
 
 RUN apt-get install -y \
     valgrind 
